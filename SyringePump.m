@@ -31,7 +31,7 @@ classdef SyringePump < handle
             if nargin < 3
                 address = 0;
             end
-            obj.SendCommand(address,['DIA' FloatToString(diam)]);                                                            
+            obj.SendCommand(address,['DIA' obj.FloatToString(diam)]);                                                            
         end
         
         function [rate,units] = GetRate(obj,address)
