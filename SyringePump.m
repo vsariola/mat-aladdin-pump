@@ -53,7 +53,7 @@ classdef SyringePump < handle
             end    
             expectedUnits = {'UM','MM','UH','MH'};
             if ~any(validatestring(units,expectedUnits))
-                error('The units of rate should be ''UM'',''MM'',''UH'' or ''MH'', corresponding to µl/min, ml/min, µl/h and ml/h, respectively');
+                error('The units of rate should be ''UM'',''MM'',''UH'' or ''MH'', corresponding to Âµl/min, ml/min, Âµl/h and ml/h, respectively');
             end
             obj.SendCommand(address,['RAT' obj.FloatToString(rate) units]);                                                            
         end           
@@ -140,6 +140,9 @@ classdef SyringePump < handle
             
             % TODO: implement safe mode
             response = query(obj.serial, commandJoined, '%s\x0D' ,'\x02%s');
+	    if isempty(response)
+    		error('No response received from device');
+	    end
             if response(end) ~= 3
                 error('ETX not received in the end of packet');
             end
