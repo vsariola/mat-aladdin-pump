@@ -38,10 +38,10 @@ Working with two pumps (address 0 and 1):
 pump = SyringePump('COM5');
 pump.SetDiameter(10,0);  % 10 mm diameter syringe in pump 0
 pump.SetDiameter(5,1);  % 5 mm diameter syringe in pump 1
-pump.SetRate(16,'MH',0); % 16 ml/hr in pump 0 
+pump.SetRate(16,'MH',0); % 16 ml/hr in pump 0
 pump.SetRate(10,'MH',1); % 10 ml/hr in pump 1
 pump.Start([],0);
-pump.Start([],1s);
+pump.Start([],1);
 pause(2);
 pump.Stop(0);
 pump.Stop(1);
@@ -60,7 +60,8 @@ List of methods
 Credits
 =======
 
-Veikko Sariola, Tampere University of Technology, 2018
+[Veikko Sariola](https://github.com/vsariola),
+[SrSupp](https://github.com/SrSupp)
 
 
 License
